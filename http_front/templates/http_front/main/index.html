@@ -1,0 +1,28 @@
+{% extends 'http_front/layout.html' %}
+
+{% block content %}
+    <div class="container" style="padding-top: 5rem">
+        <div class="row column text-center">
+            <h1>Black list</h1>
+        </div>
+
+        <div class="row column text-center">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.identity }}
+            </form>
+        </div>
+
+        <div class="row column grey">
+            <p>
+                Подсказка: в поле выше можно указать почту, номер телефона, название организации, ИНН, ОГРН и прочее
+                что может более-менее точно идентифицировать человека или компанию.
+            </p>
+
+            <p>
+                Пожалуйста, постарайтесь вводить данные как можно точнее.
+            </p>
+        </div>
+
+    </div>
+{% endblock %}

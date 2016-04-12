@@ -1,0 +1,15 @@
+{
+  "name": "black",
+  "homepage": "https://github.com/sansaralab/black",
+  "authors": [
+    "Enapiuz <enapiuz@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "foundation-sites": "^6.2.1"
+  }
+}
