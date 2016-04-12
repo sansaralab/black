@@ -1,11 +1,15 @@
 from .models import Complaint, PersonSummary, Category
+from django.core.exceptions import ObjectDoesNotExist
 from typing import List
 
 
 def make_complaint(identity: str, content: str, category: str):
     cat, cat_created = Category.objects.get_or_create(title=category)
     complaint = Complaint.objects.create(identity=identity, content=content, category=cat)
-    person, person_created = PersonSummary.objects.get_or_create(identity=identity)
+    try:
+        person = PersonSummary.objects.get(identity=identity)
+    except ObjectDoesNotExist:
+        person = PersonSummary.objects.create(identity=identity, complaints=[])
     person.complaints.append(complaint.id)
     person.save()
 

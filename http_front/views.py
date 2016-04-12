@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from .forms import FirstScreenForm, ConcreteForm
+from complaints_manager import service
 
 
 def main(req):
@@ -24,7 +25,11 @@ def concrete(req):
     if req.method == 'POST':
         form = ConcreteForm(req.POST)
         if form.is_valid():
-            # TODO: make complaint
+            service.make_complaint(
+                form.cleaned_data['identity'],
+                form.cleaned_data['content'],
+                form.cleaned_data['category']
+            )
             return redirect('/')
 
     first_form = FirstScreenForm(old_post)
