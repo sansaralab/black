@@ -8,7 +8,6 @@ class Category(models.Model):
 
 class Complaint(models.Model):
     identity = models.TextField(blank=False, null=False)
-    title = models.TextField(blank=False, null=False)
     content = models.TextField(blank=False, null=False)
     category = models.ForeignKey(Category)
     likes = models.IntegerField(null=False, default=0)

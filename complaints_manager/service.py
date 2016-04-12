@@ -2,9 +2,9 @@ from .models import Complaint, PersonSummary, Category
 from typing import List
 
 
-def make_complaint(identity: str, title: str, content: str, category: str):
+def make_complaint(identity: str, content: str, category: str):
     cat, cat_created = Category.objects.get_or_create(title=category)
-    complaint = Complaint.objects.create(identity=identity, title=title, content=content, category=cat)
+    complaint = Complaint.objects.create(identity=identity, content=content, category=cat)
     person, person_created = PersonSummary.objects.get_or_create(identity=identity)
     person.complaints.append(complaint.id)
     person.save()

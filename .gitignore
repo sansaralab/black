@@ -1,4 +1,3 @@
 /.idea
 /db.sqlite3
-/http_front/static/http_front/vendor/*
-!/http_front/static/http_front/vendor/.gitkeep
+/http_front/static/http_front/vendor
