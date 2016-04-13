@@ -10,10 +10,12 @@ def main(req):
         if form.is_valid():
             req.session['_old_post'] = req.POST
             return HttpResponseRedirect('/concrete')
+        search_form = SearchForm(req.POST)
+        if search_form.is_valid():
+            pass
     else:
         form = FirstScreenForm()
-
-    search_form = SearchForm()
+        search_form = SearchForm()
 
     return render(req, 'http_front/main/index.html', {
         'form': form,
