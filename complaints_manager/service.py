@@ -4,6 +4,7 @@ from typing import List
 
 
 def make_complaint(identity: str, content: str, category: str):
+    identity = prepare_identity(identity)
     cat, cat_created = Category.objects.get_or_create(title=category)
     complaint = Complaint.objects.create(identity=identity, content=content, category=cat)
     try:
