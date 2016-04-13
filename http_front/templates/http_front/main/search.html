@@ -16,7 +16,7 @@
         {% if complaints|length > 0 %}
             {% for complaint in complaints %}
                 <div class="callout">
-                    <small>{{ complaint.category.title }}</small>
+                    <small style="font-size: 0.8rem">{{ complaint.category.title }} - {{ complaint.create_date }}</small>
                     <p>{{ complaint.content }}</p>
 
                 </div>

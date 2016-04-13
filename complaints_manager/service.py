@@ -14,6 +14,7 @@ def make_complaint(identity: str, content: str, category: str):
     except ObjectDoesNotExist:
         person = PersonSummary.objects.create(identity=identity, complaints=[])
     person.complaints.append(complaint.id)
+    person.complaints_count += 1
     person.save()
 
 
@@ -26,7 +27,7 @@ def search_complaints(identity: str, frame: int = 1) -> List[Complaint]:
     window = 30
     try:
         person = PersonSummary.objects.get(identity=identity)
-        complaints = Complaint.objects.filter(pk__in=person.complaints).order_by('-likes')[window * (frame-1):window*frame]
+        complaints = Complaint.objects.filter(pk__in=person.complaints).order_by('-likes', '-create_date')[window * (frame-1):window*frame]
     except ObjectDoesNotExist:
         return []
 
