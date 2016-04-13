@@ -7,6 +7,12 @@ class FirstScreenForm(forms.Form):
                                widget=forms.TextInput(attrs={'placeholder': 'На кого жалуемся?', 'autofocus': ''}))
 
 
+class SearchForm(forms.Form):
+    template = forms.CharField(label="",
+                               required=True,
+                               widget=forms.TextInput(attrs={'placeholder': 'Поиск человека или компании...'}))
+
+
 class ConcreteForm(forms.Form):
     identity = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'На кого жалуемся?', 'autofocus': ''}))
     category = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Категория действия'}))

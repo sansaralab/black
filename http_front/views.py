@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from .forms import FirstScreenForm, ConcreteForm
+from .forms import FirstScreenForm, ConcreteForm, SearchForm
 from complaints_manager import service
 
 
@@ -13,8 +13,11 @@ def main(req):
     else:
         form = FirstScreenForm()
 
+    search_form = SearchForm()
+
     return render(req, 'http_front/main/index.html', {
-        'form': form
+        'form': form,
+        'search_form': search_form
     })
 
 
