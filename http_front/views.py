@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import FirstScreenForm, ConcreteForm, SearchForm
 from complaints_manager import service
@@ -36,7 +36,9 @@ def concrete(req):
                 form.cleaned_data['content'],
                 form.cleaned_data['category']
             )
-            return redirect('/')
+            req.session['_old_post'] = {'template': form.cleaned_data['identity']}
+
+            return HttpResponseRedirect('/search')
 
     first_form = FirstScreenForm(old_post)
     if first_form.is_valid():
