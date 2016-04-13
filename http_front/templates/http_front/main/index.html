@@ -1,40 +1,33 @@
 {% extends 'http_front/layout.html' %}
 
 {% block content %}
-    <div class="container" style="padding-top: 5rem">
-        <div class="row column text-center">
-            <h1>Black list</h1>
-        </div>
+    <div class="row column text-center">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.identity }}
+        </form>
+    </div>
 
-        <div class="row column text-center">
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.identity }}
-            </form>
-        </div>
+    <div class="row column grey">
+        <p class="text-justify">
+            Подсказка: в поле выше можно указать почту, номер телефона, название организации, ИНН, ОГРН и прочее
+            что может точно идентифицировать человека или компанию.
+        </p>
 
-        <div class="row column grey">
-            <p class="text-justify">
-                Подсказка: в поле выше можно указать почту, номер телефона, название организации, ИНН, ОГРН и прочее
-                что может более-менее точно идентифицировать человека или компанию.
-            </p>
+        <p class="text-center">
+            Пожалуйста, постарайтесь вводить данные как можно точнее.
+        </p>
+    </div>
 
-            <p class="text-center">
-                Пожалуйста, постарайтесь вводить данные как можно точнее.
-            </p>
-        </div>
+    <div class="row column text-center">
+        <br><br>
+        <h3>Поиск</h3>
+    </div>
 
-        <div class="row column text-center">
-            <br><br>
-            <h3>Поиск</h3>
-        </div>
-
-        <div class="row column">
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ search_form.template }}
-            </form>
-        </div>
-
+    <div class="row column">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ search_form.template }}
+        </form>
     </div>
 {% endblock %}

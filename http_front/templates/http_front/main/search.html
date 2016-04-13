@@ -1,0 +1,28 @@
+{% extends 'http_front/layout.html' %}
+
+{% block content %}
+    <div class="row column text-center">
+        <h3>Поиск</h3>
+    </div>
+
+    <div class="row column">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.template }}
+        </form>
+    </div>
+
+    <div class="row column">
+        {% if complaints|length > 0 %}
+            {% for complaint in complaints %}
+                <div class="callout">
+                    <small>{{ complaint.category.title }}</small>
+                    <p>{{ complaint.content }}</p>
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет жалоб</p>
+        {% endif %}
+    </div>
+{% endblock %}

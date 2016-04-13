@@ -1,22 +1,18 @@
 {% extends 'http_front/layout.html' %}
 
 {% block content %}
-    <div class="container" style="padding-top: 5rem">
-        <div class="row column text-center">
-            <h1>Black list</h1>
-            <h2>Подробное описание</h2>
-        </div>
+    <div class="row column text-center">
+        <h2>Подробное описание</h2>
+    </div>
 
-        <div class="row column text-center">
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.identity }}
-                {{ form.category }}
-                {{ form.content }}
+    <div class="row column text-center">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.identity }}
+            {{ form.category }}
+            {{ form.content }}
 
-                <button class="button primary">Отправить</button>
-            </form>
-        </div>
-
+            <button class="button primary">Отправить</button>
+        </form>
     </div>
 {% endblock %}

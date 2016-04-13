@@ -12,7 +12,8 @@ def main(req):
             return HttpResponseRedirect('/concrete')
         search_form = SearchForm(req.POST)
         if search_form.is_valid():
-            pass
+            req.session['_old_post'] = req.POST
+            return HttpResponseRedirect('/search')
     else:
         form = FirstScreenForm()
         search_form = SearchForm()
@@ -48,4 +49,22 @@ def concrete(req):
 
     return render(req, 'http_front/main/concrete.html', {
         'form': form
+    })
+
+
+def search(req):
+    if req.method == 'POST':
+        post = req.POST
+    else:
+        post = req.session.pop('_old_post')
+
+    search_form = SearchForm(post)
+    complaints = []
+
+    if search_form.is_valid():
+        complaints = service.search_complaints(search_form.cleaned_data['template'])
+
+    return render(req, 'http_front/main/search.html', {
+        'form': search_form,
+        'complaints': complaints
     })

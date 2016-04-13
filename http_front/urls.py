@@ -1,7 +1,8 @@
-from django.conf.urls import url, include
-from .views import main, concrete
+from django.conf.urls import url
+from .views import main, concrete, search
 
 urlpatterns = [
     url(r'^$', main),
-    url(r'^concrete', concrete)
+    url(r'^concrete', concrete),
+    url(r'^search', search)
 ]
