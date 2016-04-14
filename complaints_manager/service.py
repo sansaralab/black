@@ -4,7 +4,7 @@ from django.db import transaction
 from typing import List
 
 
-@transaction.atomic()
+@transaction.atomic
 def make_complaint(identity: str, content: str, category: str):
     identity = prepare_identity(identity)
     cat, cat_created = Category.objects.get_or_create(title=category)
